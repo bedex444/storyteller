@@ -31,9 +31,11 @@
                                 <a href="{{ route('admins.edit', ['admin' => $row->id]) }}" class="btn btn-outline-secondary">
                                     Edit
                                 </a>
+                                @if (auth()->user()->id !== $row->id)
                                 <a href="{{ route('admins.destroy', ['admin' => $row->id]) }}" class="btn btn-outline-danger">
                                     Delete
                                 </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
