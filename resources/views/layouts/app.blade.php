@@ -67,6 +67,25 @@
         </div>
     </nav>
 
+    @if (session('success') || session('error'))
+    <div class="toast-container position-absolute p-3 top-0 start-50 translate-middle-x" id="toast-wrapper">
+        <div @class(['toast align-items-center text-white border-0', 'bg-success' => session('success'),
+        'bg-danger' => session('error')]) role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @if (session('success'))
+                        {{ session('success') }}
+                    @endif
+                    @if (session('error'))
+                        {{ session('error') }}
+                    @endif
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    @endif
+
     <main class="overflow-auto">
         <div class="container-fluid">
             <div class="row flex-nowrap">
@@ -87,5 +106,18 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="{{ asset('js/menu.js') }}"></script>
+
+    <script>
+        (function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl)
+            });
+
+            toastList.forEach(element => {
+                element.show();
+            });
+        })();
+    </script>
 </body>
 </html>

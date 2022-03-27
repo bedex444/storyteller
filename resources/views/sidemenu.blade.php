@@ -51,10 +51,10 @@ function is_active($route) {
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('comments.index') }}" @class([
+                <a href="{{ route('profile.edit') }}" @class([
                     'nav-link align-middle px-0',
-                    'active' => is_active('comments')
-                ]) @if(is_active('comments')) aria-current="page" @endif>
+                    'active' => is_active('profile')
+                ]) @if(is_active('profile')) aria-current="page" @endif>
                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Profile</span>
                 </a>
             </li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,7 @@ Route::middleware(['auth'])->group(function () {
         ->only(['index', 'show']);
     Route::get('comments/{comment}/delete', [CommentController::class, 'destroy'])->name('comments.destroy');
     Route::post('comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply');
+
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 });
