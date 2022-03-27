@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Story;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $isAdmin = auth()->user()->is_admin;
+
+        $data = [];
+
+        if ($isAdmin) {
+            $users = User::where('is_admin', false)->count();
+
+            $data['users'] = $users;
+        }
+
+        $data['stories'] = Story::count();
+
+        return view('home', $data);
     }
 }
