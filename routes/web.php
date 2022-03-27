@@ -19,3 +19,5 @@ Route::get('/', [MainController::class, 'index'])->name('homepage');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+ROute::get('stories', [MainController::class, 'stories'])->name('stories');

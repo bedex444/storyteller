@@ -1,0 +1,10 @@
+.carousel-indicators {
+    position: static;
+    bottom: auto;
+    height: 180px;
+}
+.carousel-indicators div {
+    width: 200px !important;
+    height: 100%;
+    opacity: 0.8;
+}
