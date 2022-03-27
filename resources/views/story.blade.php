@@ -79,21 +79,19 @@ foreach ($pictures as $image) {
             <div class="row">
                 <div class="col-md-10 offset-1 h-25 overflow-hidden">
                     @if (count($files))
-                        <img src="{{ $files[0] }}" alt="{{ $story->name }}" class="img-fluid">
+                        <img src="{{ asset($files[0]) }}" alt="{{ $story->name }}" class="img-fluid">
                     @else
                         <img src="https://via.placeholder.com/200x150" alt="No Picture">
                     @endif
                 </div>
-                @if (count($files) > 1)
+                @if (count($files) > 0)
                     <div class="col-md-10 offset-1">
                         <div class="row mt-2 mb-3">
                             @foreach ($files as $idx => $file)
-                                @if ($idx > 0)
-                                    <div class="col-md-3 overflow-hidden" style="height: 200px; overflow:hidden;">
-                                        <a href="{{ $file }}" target="_blank" title="View Image"><img
-                                                src="{{ $file }}" class="img-thumbnail"></a>
-                                    </div>
-                                @endif
+                                <div class="col-md-3 overflow-hidden" style="height: 200px; overflow:hidden;">
+                                    <a href="{{ asset($file) }}" target="_blank" title="View Image"><img
+                                            src="{{ asset($file) }}" class="img-thumbnail"></a>
+                                </div>
                             @endforeach
                         </div>
                     </div>

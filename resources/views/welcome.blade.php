@@ -103,7 +103,7 @@
                         }
                     @endphp
                     <div class="card shadow-sm">
-                        <img src="{{ $cover }}" alt="{{ $story->name }}" class="card-img-top">
+                        <img src="{{ asset($cover) }}" alt="{{ $story->name }}" class="card-img-top">
                         <div class="card-body">
                             <h4 class="mb-3">{{ $story->location_name }}</h4>
                             <p class="card-text">{{ $content }}</p>

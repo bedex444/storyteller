@@ -75,12 +75,12 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="images" class="form-label">{{ __('Images') }}</label>
+                            <label for="pictures" class="form-label">{{ __('Pictures') }}</label>
 
-                            <input type="file" id="images" multiple class="form-control @error('images') is-invalid @enderror" name="images[]" placeholder="Select images" accept="image/*">
+                            <input type="file" id="pictures" multiple class="form-control @error('pictures') is-invalid @enderror" name="pictures[]" placeholder="Select images" accept="image/*">
                             <small class="text-muted">Multiple files are allowed</small>
 
-                            @error('images')
+                            @error('pictures')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

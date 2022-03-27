@@ -62,7 +62,7 @@ class StoryController extends Controller
 
         if ($cover) {
             $coverPath = 'public/stories/'.date('Y-m-d');
-            $fileName = time() . "." . $cover->getClientOriginalExtension();
+            $fileName = md5(now() . random_bytes(5)) . "." . $cover->getClientOriginalExtension();
             $stored = $cover->storeAs($coverPath, $fileName);
 
             $cover = $stored;
@@ -70,7 +70,7 @@ class StoryController extends Controller
 
         foreach($pictures  as $image) {
             $destinationPath = 'public/stories/'.date('Y-m-d');
-            $fileName = now() . "." . $image->getClientOriginalExtension();
+            $fileName = md5(now() . random_bytes(5)) . "." . $image->getClientOriginalExtension();
             $stored = $image->storeAs($destinationPath, $fileName);
 
             $filePaths[] = $stored;
@@ -210,7 +210,7 @@ class StoryController extends Controller
 
         if ($cover) {
             $coverPath = 'public/stories/'.date('Y-m-d');
-            $fileName = now() . "." . $cover->getClientOriginalExtension();
+            $fileName = md5(now() . random_bytes(5)) . "." . $cover->getClientOriginalExtension();
             $stored = $cover->storeAs($coverPath, $fileName);
 
             $cover = $stored;
@@ -218,7 +218,7 @@ class StoryController extends Controller
 
         foreach($pictures  as $image) {
             $destinationPath = 'public/stories/'.date('Y-m-d');
-            $fileName = now() . "." . $image->getClientOriginalExtension();
+            $fileName = md5(now() . random_bytes(5)) . "." . $image->getClientOriginalExtension();
             $stored = $image->storeAs($destinationPath, $fileName);
 
             $files[] = $stored;
@@ -243,15 +243,13 @@ class StoryController extends Controller
      */
     public function destroy($id)
     {
-        $user = auth()->user();
-
-        $story = Story::isMine($user)->findOrFail($id);
+        $story = Story::mine()->findOrFail($id);
 
         if (Storage::exists($story->cover)) {
             Storage::delete($story->cover);
         }
 
-        $images = json_decode($story->images);
+        $images = json_decode($story->images) ?? [];
 
         foreach($images as $image) {
             if (Storage::exists($image)) {
