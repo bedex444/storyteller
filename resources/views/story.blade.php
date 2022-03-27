@@ -78,11 +78,7 @@ foreach ($pictures as $image) {
             </div>
             <div class="row">
                 <div class="col-md-10 offset-1 h-25 overflow-hidden">
-                    @if (count($files))
-                        <img src="{{ asset($files[0]) }}" alt="{{ $story->name }}" class="img-fluid">
-                    @else
-                        <img src="https://via.placeholder.com/200x150" alt="No Picture">
-                    @endif
+                    <img src="{{ asset($cover) }}" alt="{{ $story->name }}" class="img-fluid">
                 </div>
                 @if (count($files) > 0)
                     <div class="col-md-10 offset-1">
