@@ -13,7 +13,7 @@
                 <thead>
                     <tr>
                         <th>SN</th>
-                        <th>Destination</th>
+                        <th>Location</th>
                         <th>Comment</th>
                         <th>Date</th>
                         <th>Options</th>
@@ -23,7 +23,7 @@
                     @foreach ($data as $row)
                         <tr>
                             <td>{{ $row->id }}</td>
-                            <td>{{ $row->destination->name }}</td>
+                            <td>{{ $row->story->location_name }}</td>
                             <td>{{ $row->comment }}</td>
                             <td>{{ $row->created_at }}</td>
                             <td>

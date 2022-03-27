@@ -67,7 +67,7 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="overflow-auto">
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 @include('sidemenu')
@@ -79,7 +79,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="container mt-3 text-center">
+    <footer class="container p-3 bg-white text-center">
         <p>&copy; 2022 {{ config('app.name') }}.</p>
     </footer>
 

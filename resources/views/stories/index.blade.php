@@ -4,17 +4,18 @@
 <div class="container-fluid">
     <div class="row mb-3 mt-5">
         <div class="col-md-8 d-flex justify-content-between">
-            <h4>Destinations</h4>
-            <a href="{{ route('destinations.create') }}" class="btn btn-primary">Add Destination</a>
+            <h4>Stories</h4>
+            <a href="{{ route('stories.create') }}" class="btn btn-primary">Add Story</a>
         </div>
     </div>
     <div class="row justify-content-start">
         <div class="col-md-8">
-            <table class="table table-bordered">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>SN</th>
-                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Region</th>
                         <th>Story Teller</th>
                         <th>Date</th>
                         <th>Options</th>
@@ -24,17 +25,18 @@
                     @foreach ($data as $row)
                         <tr>
                             <td>{{ $row->id }}</td>
-                            <td>{{ $row->name }}</td>
-                            <td>{{ $row->storyteller->name }}</td>
+                            <td>{{ $row->location_name }}</td>
+                            <td>{{ $row->region }}</td>
+                            <td>{{ $row->user->name }}</td>
                             <td>{{ $row->created_at }}</td>
                             <td>
-                                <a href="{{ route('destinations.show', ['destination' => $row->id]) }}" class="btn btn-outline-primary">
+                                <a href="{{ route('view-story', ['story' => $row->id]) }}" target="_blank" class="btn btn-outline-primary">
                                     View
                                 </a>
-                                <a href="{{ route('destinations.edit', ['destination' => $row->id]) }}" class="btn btn-outline-secondary">
+                                <a href="{{ route('stories.edit', ['story' => $row->id]) }}" class="btn btn-outline-secondary">
                                     Edit
                                 </a>
-                                <a href="{{ route('destinations.destroy', ['destination' => $row->id]) }}" class="btn btn-outline-danger">
+                                <a href="{{ route('stories.destroy', ['story' => $row->id]) }}" class="btn btn-outline-danger">
                                     Delete
                                 </a>
                             </td>
@@ -42,7 +44,7 @@
                     @endforeach
                     @if(!count($data))
                         <tr>
-                            <td colspan="5" class="text-center"> No record found.</td>
+                            <td colspan="6" class="text-center"> No record found.</td>
                         </tr>
                     @endif
                 </tbody>

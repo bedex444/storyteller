@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-3 mt-5">
             <div class="col-md-8 d-flex justify-content-between">
-                <h4>View Comment</h4>
+                <h4>Read Comment</h4>
             </div>
         </div>
         <div class="row justify-content-start">
@@ -11,8 +11,7 @@
                 <div class="mt-5 row">
                     <div class="col-md-8">
                         <div class="mb-2 row">
-                            <label for="name" class="col-md-4 col-form-label fw-bold">Destination</label>
-                            <p id="name" class="col-md-8 form-control-plaintext">{{ $data->destination->name }}</p>
+                            <h3><span class="fw-bold">Location</span>: <span>{{ $data->story->location_name }}</span></h3>
                         </div>
                         <hr>
                     </div>
@@ -25,14 +24,14 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="comment" class="form-label fw-bold">{{ __('Comment/Question') }}</label>
+                            <label for="comment" class="form-label fw-bold">{{ __('Comment') }}</label>
                             <p id="comment" class="form-control-plaintext">{{ $data->comment }}</p>
                         </div>
 
                         <div class="mb-4">
                             <label for="date" class="form-label fw-bold">{{ __('Date') }}</label>
                             <p id="date" class="form-control-plaintext">
-                                {{ $data->created_at->format('jS \\of F, Y h:i A') }}</p>
+                                {{ $data->created_at->format('j M, Y h:i a') }}</p>
                         </div>
 
                         <hr>

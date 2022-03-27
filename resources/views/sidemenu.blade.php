@@ -24,7 +24,7 @@ function is_active($route) {
                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Stories</span>
                 </a>
             </li>
-            @if (auth()->user()->role === 'admin')
+            @if (auth()->user()->is_admin)
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" @class([
                     'nav-link align-middle px-0',

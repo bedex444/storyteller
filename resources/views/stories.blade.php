@@ -60,39 +60,32 @@
     </header>
 
     @php
-        $slides = config('storyteller.slides');
         $regions = config('storyteller.regions');
     @endphp
-    <main>
-        <div id="homeSlider" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @foreach ($slides as $key => $slide)
-                    <div @class(['carousel-item', 'active' => $key === 0])">
-                        <div class="container" style="max-height: 550px; overflow: hidden;">
-                            <img src="{{ asset($slide['image']) }}" class="d-block w-100">
-                            <div class="carousel-caption text-start">
-                                <h1>{{ $slide['title'] }}</h1>
-                                <p>{{ $slide['description'] }}</p>
-                            </div>
-                        </div>
+    <main class="mt-5">
+        <div class="container p-3">
+            <div class="row my-5">
+                <div class="col-md-12 text-center">
+                    <h2 class="my-5 display-6 fw-bold">Stories</h2>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <form id="region-form" action="{{ route('list-stories') }}" method="GET">
+                            <label for="region" class="form-label">Filter by region</label>
+                            <select class="form-select" aria-label="Select a region" name="region"
+                                onchange="document.getElementById('region-form').submit();">
+                                <option value="">All</option>
+                                @foreach ($regions as $region)
+                                    <option value="{{ $region }}" @selected(request()->query('region', null) === $region)>
+                                        {{ $region }}</option>
+                                @endforeach
+                            </select>
+                        </form>
                     </div>
-                @endforeach
+                </div>
             </div>
-            <div class="carousel-indicators row-cols-1 row-cols-sm-1 row-cols-md-3">
-                @foreach ($slides as $key => $slide)
-                    <div data-bs-target="#homeSlider" data-slide-to="{{ $key }}" @class(['active' => $key === 0])
-                        @if ($key === 0)
-                        aria-current="true"
-                @endif>
-                <img src="{{ asset($slide['image']) }}" class="d-block w-100">
-            </div>
-            @endforeach
-        </div>
-        </div>
-
-        <div class="container">
-            <h3 class="display-6 text-center">Latest Stories</h3>
-
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach ($stories as $story)
                     @php
@@ -119,7 +112,7 @@
             @if (!count($stories))
                 <div class="row mb-5 p-5">
                     <div class="col text-center">
-                        <h5>No stories published yet.</h5>
+                        <h5>No story found.</h5>
                     </div>
                 </div>
             @endif
