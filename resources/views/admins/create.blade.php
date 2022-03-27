@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row mb-3 mt-5">
         <div class="col-md-8 d-flex justify-content-between">
-            <h4>New Admin</h4>
+            <h4>New Administrator</h4>
         </div>
     </div>
     <div class="row justify-content-start">

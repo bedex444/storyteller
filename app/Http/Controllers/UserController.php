@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::isStoryTeller()->get();
+        $users = User::isUser()->get();
 
         return view('users.index', [
             'data' => $users
@@ -59,10 +59,10 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'status' => $request->input('status'),
-            'role' => 'user'
+            'is_admin' => false
         ]);
 
-        return to_route('users.index')->with('action.success', 'User added successfully');
+        return to_route('users.index')->with('success', 'User created successfully');
     }
 
     /**
@@ -73,7 +73,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user =  User::isStoryTeller()->find($id);
+        $user =  User::isUser()->find($id);
         return view('users.show', ['data' => $user]);
     }
 
@@ -85,7 +85,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user =  User::isStoryTeller()->find($id);
+        $user =  User::isUser()->find($id);
         return view('users.edit', ['data' => $user]);
     }
 
@@ -112,7 +112,7 @@ class UserController extends Controller
             'status' => 'Status is required',
         ]);
 
-        $user = User::isStoryTeller()->findOrFail($id);
+        $user = User::isUser()->findOrFail($id);
 
         $updateData = [
             'name' => $request->input('name'),
@@ -126,7 +126,7 @@ class UserController extends Controller
 
         $user->update($updateData);
 
-        return to_route('users.index')->with('action.success', 'User updated successfully');
+        return to_route('users.index')->with('success', 'User updated successfully');
     }
 
     /**
@@ -137,10 +137,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::isStoryTeller()->findOrFail($id);
+        $user = User::isUser()->findOrFail($id);
 
         $user->delete();
 
-        return to_route('users.index')->with('action.success', 'User deleted');
+        return to_route('users.index')->with('success', 'User deleted');
     }
 }

@@ -9,7 +9,7 @@
     </div>
     <div class="row justify-content-start">
         <div class="col-md-8">
-            <table class="table table-bordered">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>SN</th>

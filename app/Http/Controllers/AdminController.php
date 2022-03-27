@@ -59,10 +59,10 @@ class AdminController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'status' => $request->input('status'),
-            'role' => 'admin'
+            'is_admin' => true
         ]);
 
-        return to_route('admins.index')->with('action.success', 'Admin added successfully');
+        return to_route('admins.index')->with('success', 'Administrator added successfully');
     }
 
     /**
@@ -126,7 +126,7 @@ class AdminController extends Controller
 
         $user->update($updateData);
 
-        return to_route('admins.index')->with('action.success', 'Admin updated successfully');
+        return to_route('admins.index')->with('success', 'Administrator updated successfully');
     }
 
     /**
@@ -141,6 +141,6 @@ class AdminController extends Controller
 
         $user->delete();
 
-        return to_route('admins.index')->with('action.success', 'Admin deleted');
+        return to_route('admins.index')->with('success', 'Administrator deleted');
     }
 }

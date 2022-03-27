@@ -4,13 +4,13 @@
 <div class="container-fluid">
     <div class="row mb-3 mt-5">
         <div class="col-md-8 d-flex justify-content-between">
-            <h4>Admins</h4>
+            <h4>Admnistrators</h4>
             <a href="{{ route('admins.create') }}" class="btn btn-primary">Add Admin</a>
         </div>
     </div>
     <div class="row justify-content-start">
         <div class="col-md-8">
-            <table class="table table-bordered">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>SN</th>

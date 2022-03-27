@@ -60,7 +60,7 @@
                         <div class="mb-4">
                             <label for="status" class="form-label">{{ __('Status') }}</label>
 
-                            <select id="status" class="form-control @error('status') is-invalid @enderror" name="status" required>
+                            <select id="status" class="form-control form-select @error('status') is-invalid @enderror" name="status" required>
                                 @foreach (['1' => 'Active', '0' => 'Inactive'] as $key => $val)
                                     <option value="{{ $key }}" @selected(old('status', $data->status) == $key)>
                                         {{ $val }}
